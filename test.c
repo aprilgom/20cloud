@@ -193,8 +193,8 @@ void* rnd_read(void* data){
 }
 
 int main() {
-	srand((unsigned int)time(NULL));
-	time_t start,end;
+	unsigned long start,end = 0;
+	
 	double result;
 	pthread_t seq_r_thread[8];
 	pthread_t seq_w_thread[8];
@@ -204,21 +204,34 @@ int main() {
 	
 	TST_PARAM seq_param[8];
 	TST_PARAM rnd_param[8];
+	
 	//sequential write
 	for(int t_i = 0;t_i<8;t_i++){
 		seq_param[t_i].list = kv_new();
 		pthread_create(&seq_w_thread[t_i], NULL, seq_write, (void*)&seq_param[t_i]);
 	}
 	Sleep(2000);
-	start = time(NULL);
+	start = GetTickCount64();
 	pthread_cond_broadcast(&cond);
 	for(int t_i = 0;t_i<8;t_i++){
 		pthread_join(seq_w_thread[t_i],NULL);	
 	}	
-	end = time(NULL);
-	printf("sequential write : %f seconds\n",(double)end - start);
-
-	//sequential read
+	end = GetTickCount64();
+	printf("sequential write : %ld ms\n",(unsigned long)(end - start));
+	//프로세서수 1 : 4375????
+	//프로세서수 2 : 5초?
+	//프로세서수 3 : 6초
+	//프로세서수 4 : 6초
+	//프로세서수 5 : 6984 6172 7031 7031 6969
+	//프로세서수 6 : 7140 6265 6297 7047 7015
+	//프로세서수 7 : 7672 7671 6687 6703 7703
+	//프로세서수 8 : 7375 7235
+	//너무 오래 걸려요.. 
+	//seq_read, rnd_read의 경우 0부터 999999까지의 키값으로 kv_get을 호출하니 O(n^2)로 실행시간이 매우 길었습니다.
+	//kv_get(list,i)을 호출할때마다 리스트를 맨 처음 키값인 0부터 i까지 읽음. for문 안에 kv_get을 일일히 실행하니 읽는 횟수가 n(n+1)/2)
+	
+	/*
+	//sequential read with kv_get
 	for(int t_i = 0;t_i<8;t_i++){
 		pthread_create(&seq_r_thread[t_i], NULL, seq_read, (void*)&seq_param[t_i]);
 	}
@@ -230,8 +243,8 @@ int main() {
 	}	
 	end = time(NULL);
 	printf("sequential read : %f seconds\n",(double)end - start);
-
-	KV_NODE* res;
+	*/
+	/*
 	//random write
 	for(int t_i = 0;t_i<8;t_i++){
 		rnd_param[t_i].list = kv_new();
@@ -245,8 +258,8 @@ int main() {
 	}	
 	end = time(NULL);
 	printf("random write : %f seconds\n",(double)end - start);
-
-	
+	*/
+	/*
 	//random read
 	for(int t_i = 0;t_i<8;t_i++){
 		pthread_create(&rnd_r_thread[t_i], NULL, rnd_read, (void*)&rnd_param[t_i]);
@@ -259,5 +272,6 @@ int main() {
 	}	
 	end = time(NULL);
 	printf("random read : %f seconds\n",(double)end - start);
+	*/
 	return 0;
 }
