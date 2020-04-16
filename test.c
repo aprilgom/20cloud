@@ -4,9 +4,16 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<pthread.h>
+#include<windows.h>
+#define BIG_RAND(n) (int)(((double)((rand()<<15) | rand())) / (((RAND_MAX<<15) | RAND_MAX) + 1) * (n))
+#define TEST_NUM 1000000
 
-#define NUM_NODES 1000
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
+typedef struct _TST_PARAM{
+	KV_HEAD* list;
+}TST_PARAM;
 
 typedef struct _INSERT_PARAM {
 	KV_HEAD* list;
@@ -29,7 +36,23 @@ typedef struct _SEARCH_RANGE_PARAM {
 	int keymin,keymax;
 }SEARCH_RANGE_PARAM;
 
-
+void swap(int* a,int* b){
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+void shuffle(int* arr,int n){
+	int rnd = 0;
+	for(int i = 0;i<n;i++){
+		rnd = BIG_RAND(n);
+		swap(&arr[i],&arr[rnd]);
+	}
+}
+void init_seq_arr(int* arr,int n){
+	for(int i = 0;i<n;i++){
+		arr[i]=i;
+	}
+}
 void* search(void* data) {
 	pid_t pid;
 	pthread_t tid;
@@ -112,62 +135,129 @@ void* delete(void* data) {
 	return ret;
 }
 
-int main() {
+void* seq_write(void* data){
+	pthread_cond_wait(&cond,&mutex);
+	pthread_mutex_unlock(&mutex);
+	TST_PARAM* param = (TST_PARAM*)data;	
+	KV_HEAD* sq_kv = param->list; 
+	for(int i = 0;i<TEST_NUM;i++){
+		KV_NODE* new_node;
+		new_node = (KV_NODE*)malloc(sizeof(KV_NODE));
+		new_node->key = i;
+		new_node->value = i;
+		kv_put(sq_kv,new_node);
+	}
+}
 
-	pthread_t s_thread[100];
-	pthread_t i_thread[100];
-	pthread_t d_thread[100];
+void* seq_read(void* data){
+	pthread_cond_wait(&cond,&mutex);
+	pthread_mutex_unlock(&mutex);
+	TST_PARAM* param = (TST_PARAM*)data;	
+	KV_HEAD* sq_kv = param->list; 
+	for(int i = 0;i<TEST_NUM;i++){
+		kv_get(sq_kv,i);
+	}
+}
+
+
+void* rnd_write(void* data){
+	pthread_cond_wait(&cond,&mutex);
+	pthread_mutex_unlock(&mutex);
+	TST_PARAM* param = (TST_PARAM*)data;	
+	KV_HEAD* sq_kv = param->list; 
+	int rnd_arr[TEST_NUM];
+	init_seq_arr(rnd_arr,TEST_NUM);
+	shuffle(rnd_arr,TEST_NUM);
+	for(int i = 0;i<TEST_NUM;i++){
+		KV_NODE* new_node;
+		new_node = (KV_NODE*)malloc(sizeof(KV_NODE));
+		new_node->key = rnd_arr[i];
+		new_node->value = rnd_arr[i];
+		kv_put(sq_kv,new_node);
+	}
+}
+
+
+void* rnd_read(void* data){
+	pthread_cond_wait(&cond,&mutex);
+	pthread_mutex_unlock(&mutex);
+	TST_PARAM* param = (TST_PARAM*)data;	
+	KV_HEAD* sq_kv = param->list; 
+	int rnd_arr[TEST_NUM];
+	init_seq_arr(rnd_arr,TEST_NUM);
+	shuffle(rnd_arr,TEST_NUM);
+	KV_NODE* res;
+	for(int i = 0;i<TEST_NUM;i++){
+		res = kv_get(sq_kv,rnd_arr[i]);
+	}
+}
+
+int main() {
+	srand((unsigned int)time(NULL));
+	time_t start,end;
+	double result;
+	pthread_t seq_r_thread[8];
+	pthread_t seq_w_thread[8];
+	pthread_t rnd_r_thread[8];
+	pthread_t rnd_w_thread[8];
 	int joinStatus;
 	
-	KV_HEAD* my_kv;
-	KV_NODE tmpnode[100];
-	KV_NODE* search_ret[100];
+	TST_PARAM seq_param[8];
+	TST_PARAM rnd_param[8];
+	//sequential write
+	for(int t_i = 0;t_i<8;t_i++){
+		seq_param[t_i].list = kv_new();
+		pthread_create(&seq_w_thread[t_i], NULL, seq_write, (void*)&seq_param[t_i]);
+	}
+	Sleep(2000);
+	start = time(NULL);
+	pthread_cond_broadcast(&cond);
+	for(int t_i = 0;t_i<8;t_i++){
+		pthread_join(seq_w_thread[t_i],NULL);	
+	}	
+	end = time(NULL);
+	printf("sequential write : %f seconds\n",(double)end - start);
 
-	INSERT_PARAM tmp_insert_param[100];
-	SEARCH_PARAM tmp_search_param[100];
-	DELETE_PARAM tmp_delete_param[100];
+	//sequential read
+	for(int t_i = 0;t_i<8;t_i++){
+		pthread_create(&seq_r_thread[t_i], NULL, seq_read, (void*)&seq_param[t_i]);
+	}
+	Sleep(2000);
+	start = time(NULL);
+	pthread_cond_broadcast(&cond);
+	for(int t_i = 0;t_i<8;t_i++){
+		pthread_join(seq_r_thread[t_i],NULL);	
+	}	
+	end = time(NULL);
+	printf("sequential read : %f seconds\n",(double)end - start);
 
-	my_kv = kv_new();
-	if(my_kv == NULL){
-		printf("kv create failed");
-		getchar();
-		return -1;
+	KV_NODE* res;
+	//random write
+	for(int t_i = 0;t_i<8;t_i++){
+		rnd_param[t_i].list = kv_new();
+		pthread_create(&rnd_w_thread[t_i], NULL, rnd_write, (void*)&rnd_param[t_i]);
 	}
-	for (int i = 0;i < 100;i++) {
-		tmpnode[i].key = i;
-		tmpnode[i].value = i;
-		tmp_insert_param[i].list = my_kv;
-		tmp_insert_param[i].kv_pair = &tmpnode[i];
-		pthread_create(&i_thread[i], NULL, insert, (void*)&tmp_insert_param[i]);
-	}
-	for (int i = 0;i < 100;i++) {
-		pthread_join(i_thread[i], (void**)&joinStatus);
-	}
-	for (int i = 0;i < 100;i++) {
-		tmp_search_param[i].list = my_kv;
-		tmp_search_param[i].key = i;
-		pthread_create(&s_thread[i], NULL, search,(void*)&tmp_search_param[i]);
-	}
-	for (int i = 0;i < 100;i++) {
-		pthread_join(s_thread[i], (void**)&search_ret[i]);
-	}
-	for (int i = 0;i < 100;i++) {
-		printf("searched key: %d value: %d \n",search_ret[i]->key,search_ret[i]->value);
-	}
-	for (int i = 0;i < 100;i++) {
-		tmp_delete_param[i].list = my_kv;
-		tmp_delete_param[i].key = i;
-		pthread_create(&d_thread[i], NULL, delete, (void*)&tmp_delete_param[i]);
-	}
-	for (int i = 0;i < 100;i++) {
-		pthread_join(d_thread[i], (void**)&joinStatus);
-	}
-	if (my_kv->list.next == &my_kv->list)printf("delete successed\n");
-	printf("test is done\n");
-	kv_destroy(my_kv);
+	Sleep(2000);
+	start = time(NULL);
+	pthread_cond_broadcast(&cond);
+	for(int t_i = 0;t_i<8;t_i++){
+		pthread_join(rnd_w_thread[t_i],NULL);	
+	}	
+	end = time(NULL);
+	printf("random write : %f seconds\n",(double)end - start);
 
-	getchar();
 	
+	//random read
+	for(int t_i = 0;t_i<8;t_i++){
+		pthread_create(&rnd_r_thread[t_i], NULL, rnd_read, (void*)&rnd_param[t_i]);
+	}
+	Sleep(2000);
+	start = time(NULL);
+	pthread_cond_broadcast(&cond);
+	for(int t_i = 0;t_i<8;t_i++){
+		pthread_join(rnd_r_thread[t_i],NULL);	
+	}	
+	end = time(NULL);
+	printf("random read : %f seconds\n",(double)end - start);
 	return 0;
-	
 }
