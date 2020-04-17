@@ -1,0 +1,3 @@
+/home/hs/20cloud/CMakeFiles/rebuild_cache.dir
+/home/hs/20cloud/CMakeFiles/test.out.dir
+/home/hs/20cloud/CMakeFiles/edit_cache.dir

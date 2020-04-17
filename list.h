@@ -6,11 +6,20 @@
 #define list_for_each_safe(pos,n,head) \
 	for(pos = (head)->next, n=pos->next; pos != (head); \
 		pos = n, n = pos->next)
+#ifdef _WIN32
 #define CONTAINING_RECORD(address, type, field) \
 	((type *)((char*)(address) - offsetof(type,field)))
 #define list_entry(address, type, field) \
 	CONTAINING_RECORD(address, type, field)
+#else
+#include <stddef.h>
+#define container_of(ptr,type,member) ({\
+		const typeof(((type*)0)->member) *__mptr=(ptr);	\
+		(type*)((char*) __mptr-offsetof(type,member));})	
 
+#define list_entry(ptr,type,member) \
+	container_of(ptr,type,member)
+#endif
 
 typedef struct _DHEAD {
 	struct _DHEAD *next, *prev;
