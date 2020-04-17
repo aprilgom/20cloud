@@ -1,2 +1,0 @@
-sequential write : 0 second
-sequential read : 117 seconds
