@@ -1,4 +1,0 @@
-sequential write : 0 seconds
-sequential read : 199 seconds
-random write : 0 seconds
-random read : 249 seconds
