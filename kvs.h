@@ -24,5 +24,3 @@ KV_NODE* kv_get(KV_HEAD* node, int key);
 KV_NODE* kv_get_range(KV_HEAD* node, int keymin, int keymax,int* num_entries);
 int kv_delete(KV_HEAD* node, int key);
 #endif
-
-

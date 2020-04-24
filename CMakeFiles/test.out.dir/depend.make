@@ -5,10 +5,25 @@ CMakeFiles/test.out.dir/kvs.o: kvs.c
 CMakeFiles/test.out.dir/kvs.o: kvs.h
 CMakeFiles/test.out.dir/kvs.o: list.h
 
+CMakeFiles/test.out.dir/kvsh.o: kvs.h
+CMakeFiles/test.out.dir/kvsh.o: kvsh.c
+CMakeFiles/test.out.dir/kvsh.o: kvsh.h
+CMakeFiles/test.out.dir/kvsh.o: list.h
+CMakeFiles/test.out.dir/kvsh.o: test_define.h
+
+CMakeFiles/test.out.dir/kvsh_rwl.o: kvs.h
+CMakeFiles/test.out.dir/kvsh_rwl.o: kvsh_rwl.c
+CMakeFiles/test.out.dir/kvsh_rwl.o: kvsh_rwl.h
+CMakeFiles/test.out.dir/kvsh_rwl.o: list.h
+CMakeFiles/test.out.dir/kvsh_rwl.o: test_define.h
+
 CMakeFiles/test.out.dir/list.o: list.c
 CMakeFiles/test.out.dir/list.o: list.h
 
-CMakeFiles/test.out.dir/test.o: kvs.h
-CMakeFiles/test.out.dir/test.o: list.h
-CMakeFiles/test.out.dir/test.o: test.c
+CMakeFiles/test.out.dir/test_ref.o: kvs.h
+CMakeFiles/test.out.dir/test_ref.o: kvsh.h
+CMakeFiles/test.out.dir/test_ref.o: kvsh_rwl.h
+CMakeFiles/test.out.dir/test_ref.o: list.h
+CMakeFiles/test.out.dir/test_ref.o: test_define.h
+CMakeFiles/test.out.dir/test_ref.o: test_ref.c
 

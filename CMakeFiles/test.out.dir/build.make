@@ -57,28 +57,28 @@ include CMakeFiles/test.out.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test.out.dir/flags.make
 
-CMakeFiles/test.out.dir/test.o: CMakeFiles/test.out.dir/flags.make
-CMakeFiles/test.out.dir/test.o: test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hs/20cloud/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test.out.dir/test.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.out.dir/test.o   -c /home/hs/20cloud/test.c
+CMakeFiles/test.out.dir/test_ref.o: CMakeFiles/test.out.dir/flags.make
+CMakeFiles/test.out.dir/test_ref.o: test_ref.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hs/20cloud/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/test.out.dir/test_ref.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.out.dir/test_ref.o   -c /home/hs/20cloud/test_ref.c
 
-CMakeFiles/test.out.dir/test.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.out.dir/test.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hs/20cloud/test.c > CMakeFiles/test.out.dir/test.i
+CMakeFiles/test.out.dir/test_ref.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.out.dir/test_ref.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hs/20cloud/test_ref.c > CMakeFiles/test.out.dir/test_ref.i
 
-CMakeFiles/test.out.dir/test.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.out.dir/test.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hs/20cloud/test.c -o CMakeFiles/test.out.dir/test.s
+CMakeFiles/test.out.dir/test_ref.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.out.dir/test_ref.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hs/20cloud/test_ref.c -o CMakeFiles/test.out.dir/test_ref.s
 
-CMakeFiles/test.out.dir/test.o.requires:
+CMakeFiles/test.out.dir/test_ref.o.requires:
 
-.PHONY : CMakeFiles/test.out.dir/test.o.requires
+.PHONY : CMakeFiles/test.out.dir/test_ref.o.requires
 
-CMakeFiles/test.out.dir/test.o.provides: CMakeFiles/test.out.dir/test.o.requires
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.o.provides.build
-.PHONY : CMakeFiles/test.out.dir/test.o.provides
+CMakeFiles/test.out.dir/test_ref.o.provides: CMakeFiles/test.out.dir/test_ref.o.requires
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test_ref.o.provides.build
+.PHONY : CMakeFiles/test.out.dir/test_ref.o.provides
 
-CMakeFiles/test.out.dir/test.o.provides.build: CMakeFiles/test.out.dir/test.o
+CMakeFiles/test.out.dir/test_ref.o.provides.build: CMakeFiles/test.out.dir/test_ref.o
 
 
 CMakeFiles/test.out.dir/kvs.o: CMakeFiles/test.out.dir/flags.make
@@ -129,21 +129,73 @@ CMakeFiles/test.out.dir/list.o.provides: CMakeFiles/test.out.dir/list.o.requires
 CMakeFiles/test.out.dir/list.o.provides.build: CMakeFiles/test.out.dir/list.o
 
 
+CMakeFiles/test.out.dir/kvsh.o: CMakeFiles/test.out.dir/flags.make
+CMakeFiles/test.out.dir/kvsh.o: kvsh.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hs/20cloud/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/test.out.dir/kvsh.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.out.dir/kvsh.o   -c /home/hs/20cloud/kvsh.c
+
+CMakeFiles/test.out.dir/kvsh.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.out.dir/kvsh.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hs/20cloud/kvsh.c > CMakeFiles/test.out.dir/kvsh.i
+
+CMakeFiles/test.out.dir/kvsh.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.out.dir/kvsh.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hs/20cloud/kvsh.c -o CMakeFiles/test.out.dir/kvsh.s
+
+CMakeFiles/test.out.dir/kvsh.o.requires:
+
+.PHONY : CMakeFiles/test.out.dir/kvsh.o.requires
+
+CMakeFiles/test.out.dir/kvsh.o.provides: CMakeFiles/test.out.dir/kvsh.o.requires
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh.o.provides.build
+.PHONY : CMakeFiles/test.out.dir/kvsh.o.provides
+
+CMakeFiles/test.out.dir/kvsh.o.provides.build: CMakeFiles/test.out.dir/kvsh.o
+
+
+CMakeFiles/test.out.dir/kvsh_rwl.o: CMakeFiles/test.out.dir/flags.make
+CMakeFiles/test.out.dir/kvsh_rwl.o: kvsh_rwl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hs/20cloud/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/test.out.dir/kvsh_rwl.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test.out.dir/kvsh_rwl.o   -c /home/hs/20cloud/kvsh_rwl.c
+
+CMakeFiles/test.out.dir/kvsh_rwl.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test.out.dir/kvsh_rwl.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/hs/20cloud/kvsh_rwl.c > CMakeFiles/test.out.dir/kvsh_rwl.i
+
+CMakeFiles/test.out.dir/kvsh_rwl.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test.out.dir/kvsh_rwl.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/hs/20cloud/kvsh_rwl.c -o CMakeFiles/test.out.dir/kvsh_rwl.s
+
+CMakeFiles/test.out.dir/kvsh_rwl.o.requires:
+
+.PHONY : CMakeFiles/test.out.dir/kvsh_rwl.o.requires
+
+CMakeFiles/test.out.dir/kvsh_rwl.o.provides: CMakeFiles/test.out.dir/kvsh_rwl.o.requires
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh_rwl.o.provides.build
+.PHONY : CMakeFiles/test.out.dir/kvsh_rwl.o.provides
+
+CMakeFiles/test.out.dir/kvsh_rwl.o.provides.build: CMakeFiles/test.out.dir/kvsh_rwl.o
+
+
 # Object files for target test.out
 test_out_OBJECTS = \
-"CMakeFiles/test.out.dir/test.o" \
+"CMakeFiles/test.out.dir/test_ref.o" \
 "CMakeFiles/test.out.dir/kvs.o" \
-"CMakeFiles/test.out.dir/list.o"
+"CMakeFiles/test.out.dir/list.o" \
+"CMakeFiles/test.out.dir/kvsh.o" \
+"CMakeFiles/test.out.dir/kvsh_rwl.o"
 
 # External object files for target test.out
 test_out_EXTERNAL_OBJECTS =
 
-test.out: CMakeFiles/test.out.dir/test.o
+test.out: CMakeFiles/test.out.dir/test_ref.o
 test.out: CMakeFiles/test.out.dir/kvs.o
 test.out: CMakeFiles/test.out.dir/list.o
+test.out: CMakeFiles/test.out.dir/kvsh.o
+test.out: CMakeFiles/test.out.dir/kvsh_rwl.o
 test.out: CMakeFiles/test.out.dir/build.make
 test.out: CMakeFiles/test.out.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hs/20cloud/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable test.out"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hs/20cloud/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable test.out"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.out.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -151,9 +203,11 @@ CMakeFiles/test.out.dir/build: test.out
 
 .PHONY : CMakeFiles/test.out.dir/build
 
-CMakeFiles/test.out.dir/requires: CMakeFiles/test.out.dir/test.o.requires
+CMakeFiles/test.out.dir/requires: CMakeFiles/test.out.dir/test_ref.o.requires
 CMakeFiles/test.out.dir/requires: CMakeFiles/test.out.dir/kvs.o.requires
 CMakeFiles/test.out.dir/requires: CMakeFiles/test.out.dir/list.o.requires
+CMakeFiles/test.out.dir/requires: CMakeFiles/test.out.dir/kvsh.o.requires
+CMakeFiles/test.out.dir/requires: CMakeFiles/test.out.dir/kvsh_rwl.o.requires
 
 .PHONY : CMakeFiles/test.out.dir/requires
 

@@ -1,0 +1,5 @@
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrwrrrrrrrrwrrrrrrwrrrrrrwrrrrrrwrrrrrrwrrrrrrwrrrrrrwrrrrrrrrwrrrrrwrrrrr
+elapsed = 62.425575
+
+ops = 16019.075572
+test is done!

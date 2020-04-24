@@ -1,0 +1,7 @@
+general kv_hash
+general kv_hash
+wrrrrrrrrrwrrrrrrrrwrrrrrrrrwrrrrrrrrrrwrrrrrrwrrrrrrrrrwrrrrrrrwrrrrrrrrrwrrrrrrrwrrrrrrrrrrrrrrrrr
+elapsed = 0.294813
+
+ops = 3391981.626076
+test is done!

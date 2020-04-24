@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test.out.dir/test.o"
+  "CMakeFiles/test.out.dir/test_ref.o"
   "CMakeFiles/test.out.dir/kvs.o"
   "CMakeFiles/test.out.dir/list.o"
+  "CMakeFiles/test.out.dir/kvsh.o"
+  "CMakeFiles/test.out.dir/kvsh_rwl.o"
   "test.out.pdb"
   "test.out"
 )

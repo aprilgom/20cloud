@@ -1,0 +1,7 @@
+rwlock hash
+rwlock hash
+rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrwrwwwwwwwww
+elapsed = 0.110074
+
+ops = 9084793.928315
+test is done!

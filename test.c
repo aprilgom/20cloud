@@ -85,29 +85,6 @@ void* search(void* data) {
 	printf("key:%d search finded successfully\n",key);
 	return (void*)p_node;
 }
-/*
-void* search_range(void* data) {
-	pid_t pid;
-	pthread_t tid;
-	pid = getpid();
-	tid = pthread_self();
-	SEARCH_RANGE_PARAM* srp = (SEARCH_RANGE_PARAM*)data;
-	KV_HEAD* kv = srp->list;
-	int keymin = srp->keymin;
-	int keymax = srp->keymax;
-	KV_NODE* p_node;
-	DHEAD* p_entry;
-	int num_entries=0;
-	KV_NODE* p_kvs_nodes = kv_get_range(kv, keymin, keymax, &num_entries);
-		printf("fdsad");
-	if (num_entries != (100 - 50 + 1)) {
-		printf("pid: % d, tid : % d, keymin : % d keymax : %d expactation is not met\n", pid, tid, keymin,keymax);
-		getchar();
-		return -1;
-	}
-	printf("search range pid:%d, tid:%d ended successfully\n", pid, tid);
-}
-*/
 void* insert(void* data) {
 	
 	int* ret;

@@ -5,8 +5,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/hs/20cloud/kvs.c" "/home/hs/20cloud/CMakeFiles/test.out.dir/kvs.o"
+  "/home/hs/20cloud/kvsh.c" "/home/hs/20cloud/CMakeFiles/test.out.dir/kvsh.o"
+  "/home/hs/20cloud/kvsh_rwl.c" "/home/hs/20cloud/CMakeFiles/test.out.dir/kvsh_rwl.o"
   "/home/hs/20cloud/list.c" "/home/hs/20cloud/CMakeFiles/test.out.dir/list.o"
-  "/home/hs/20cloud/test.c" "/home/hs/20cloud/CMakeFiles/test.out.dir/test.o"
+  "/home/hs/20cloud/test_ref.c" "/home/hs/20cloud/CMakeFiles/test.out.dir/test_ref.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

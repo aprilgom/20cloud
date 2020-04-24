@@ -139,6 +139,36 @@ kvs.s:
 .PHONY : kvs.s
 
 # target to build an object file
+kvsh.o:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh.o
+.PHONY : kvsh.o
+
+# target to preprocess a source file
+kvsh.i:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh.i
+.PHONY : kvsh.i
+
+# target to generate assembly for a file
+kvsh.s:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh.s
+.PHONY : kvsh.s
+
+# target to build an object file
+kvsh_rwl.o:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh_rwl.o
+.PHONY : kvsh_rwl.o
+
+# target to preprocess a source file
+kvsh_rwl.i:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh_rwl.i
+.PHONY : kvsh_rwl.i
+
+# target to generate assembly for a file
+kvsh_rwl.s:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/kvsh_rwl.s
+.PHONY : kvsh_rwl.s
+
+# target to build an object file
 list.o:
 	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/list.o
 .PHONY : list.o
@@ -154,19 +184,19 @@ list.s:
 .PHONY : list.s
 
 # target to build an object file
-test.o:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.o
-.PHONY : test.o
+test_ref.o:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test_ref.o
+.PHONY : test_ref.o
 
 # target to preprocess a source file
-test.i:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.i
-.PHONY : test.i
+test_ref.i:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test_ref.i
+.PHONY : test_ref.i
 
 # target to generate assembly for a file
-test.s:
-	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test.s
-.PHONY : test.s
+test_ref.s:
+	$(MAKE) -f CMakeFiles/test.out.dir/build.make CMakeFiles/test.out.dir/test_ref.s
+.PHONY : test_ref.s
 
 # Help Target
 help:
@@ -180,12 +210,18 @@ help:
 	@echo "... kvs.o"
 	@echo "... kvs.i"
 	@echo "... kvs.s"
+	@echo "... kvsh.o"
+	@echo "... kvsh.i"
+	@echo "... kvsh.s"
+	@echo "... kvsh_rwl.o"
+	@echo "... kvsh_rwl.i"
+	@echo "... kvsh_rwl.s"
 	@echo "... list.o"
 	@echo "... list.i"
 	@echo "... list.s"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
+	@echo "... test_ref.o"
+	@echo "... test_ref.i"
+	@echo "... test_ref.s"
 .PHONY : help
 
 
