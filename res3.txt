@@ -1,5 +1,0 @@
-rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-elapsed = 184.619188
-
-ops = 5416.555075
-test is done!

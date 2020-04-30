@@ -1,7 +1,0 @@
-general kv_hash
-general kv_hash
-wwrrrrrrrrwwwrrrrrwwwrrrrrrwwrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-elapsed = 0.402774
-
-ops = 2482784.257897
-test is done!
