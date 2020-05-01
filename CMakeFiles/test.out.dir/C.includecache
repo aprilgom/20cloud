@@ -22,32 +22,6 @@ list.h
 pthread.h
 -
 
-/home/hs/20cloud/kvsh.c
-test_define.h
-/home/hs/20cloud/test_define.h
-kvs.h
-/home/hs/20cloud/kvs.h
-kvsh.h
-/home/hs/20cloud/kvsh.h
-list.h
-/home/hs/20cloud/list.h
-stdlib.h
--
-string.h
--
-stdio.h
--
-
-/home/hs/20cloud/kvsh.h
-test_define.h
-/home/hs/20cloud/test_define.h
-kvs.h
-/home/hs/20cloud/kvs.h
-list.h
-/home/hs/20cloud/list.h
-pthread.h
--
-
 /home/hs/20cloud/kvsh_rwl.c
 test_define.h
 /home/hs/20cloud/test_define.h
@@ -86,8 +60,6 @@ list.h
 stddef.h
 -
 
-/home/hs/20cloud/test_define.h
-
 /home/hs/20cloud/test_ref.c
 stdio.h
 -
@@ -101,10 +73,6 @@ list.h
 /home/hs/20cloud/list.h
 kvs.h
 /home/hs/20cloud/kvs.h
-test_define.h
-/home/hs/20cloud/test_define.h
-kvsh.h
-/home/hs/20cloud/kvsh.h
 kvsh_rwl.h
 /home/hs/20cloud/kvsh_rwl.h
 

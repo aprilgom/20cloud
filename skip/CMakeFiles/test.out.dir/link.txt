@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/test.out.dir/test_ref.o CMakeFiles/test.out.dir/kvsh.o CMakeFiles/test.out.dir/sl_list.o  -o test.out -lpthread 

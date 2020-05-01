@@ -6,24 +6,16 @@ CMakeFiles/test.out.dir/kvs.o
  /home/hs/20cloud/kvs.h
  /home/hs/20cloud/list.h
 CMakeFiles/test.out.dir/kvsh.o
- /home/hs/20cloud/kvs.h
- /home/hs/20cloud/kvsh.c
- /home/hs/20cloud/kvsh.h
- /home/hs/20cloud/list.h
- /home/hs/20cloud/test_define.h
 CMakeFiles/test.out.dir/kvsh_rwl.o
  /home/hs/20cloud/kvs.h
  /home/hs/20cloud/kvsh_rwl.c
  /home/hs/20cloud/kvsh_rwl.h
  /home/hs/20cloud/list.h
- /home/hs/20cloud/test_define.h
 CMakeFiles/test.out.dir/list.o
  /home/hs/20cloud/list.c
  /home/hs/20cloud/list.h
 CMakeFiles/test.out.dir/test_ref.o
  /home/hs/20cloud/kvs.h
- /home/hs/20cloud/kvsh.h
  /home/hs/20cloud/kvsh_rwl.h
  /home/hs/20cloud/list.h
- /home/hs/20cloud/test_define.h
  /home/hs/20cloud/test_ref.c

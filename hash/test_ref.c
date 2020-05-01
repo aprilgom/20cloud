@@ -2,28 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "list.h"
-#include "kvs.h"
 #include "kvsh_rwl.h"
 
 //#define TEST_HASH
 
-#ifdef TEST_HASH
-#define KV_NEW() kv_hash_new(MAX_HASH_N)
-#define COMP_KV_HEAD KV_HASH_HEAD
-#define KV_GET kv_hash_get
-#define KV_PUT kv_hash_put
-#define KV_DESTROY kv_hash_destroy
-#else
-#define KV_NEW() kv_new()
-#define COMP_KV_HEAD KV_HEAD
-#define KV_GET kv_get
-#define KV_PUT kv_put
-#define KV_DESTROY kv_destroy
-#endif
 
-#define MAX_HASH_N 1223
-#define NUM_NODES		100000
+#define MAX_HASH_N		65537 
+#define NUM_NODES		1000000
 #define NUM_THREADS		10	
 
 typedef void (*THREAD_FUNC)(void*);
@@ -43,7 +28,7 @@ struct THREAD_STATE_T {
 	struct timespec start;
 	struct timespec finish;
 	int done;
-	COMP_KV_HEAD* kvs;
+	KV_HEAD* kvs;
 };
 
 struct THREAD_ARG_T {
@@ -80,7 +65,7 @@ void *thread_main(void* arg) {
 
 	return NULL;
 }
-void do_benchmark(COMP_KV_HEAD *kvs, int num_threads, THREAD_FUNC* tfl) {
+void do_benchmark(KV_HEAD *kvs, int num_threads, THREAD_FUNC* tfl) {
 	int i, ret;
 	double elapsed = 0, num_ops = 0;
 	struct SHARED_STATE_T shared;
@@ -166,13 +151,12 @@ void search(void* arg) {
 
 
 	for (i = 0; i < NUM_NODES; i++) {
-		p_node = KV_GET(ts->kvs, i);
+		p_node = kv_get(ts->kvs, i);
 
 		if (p_node)
 			ts->done++;
 
-		if ((ts->done % 10000) == 0)
-			printf("r");
+		//if ((ts->done % 10000) == 0)printf("r");
 	}
 }
 
@@ -183,21 +167,19 @@ void insert(void* arg) {
 	for (i = 0; i < NUM_NODES; i++) {
 		node.key = i;
 		node.value = i;
-		ret = KV_PUT(ts->kvs, &node);
+		ret = kv_put(ts->kvs, &node);
 
 		ts->done++;
 
-		if ((ts->done % 10000) == 0)
-			printf("w");
+		//if ((ts->done % 10000) == 0)printf("w");
 	}
 }
 
 int main() {
-	COMP_KV_HEAD* my_kvs;
+	KV_HEAD* my_kvs;
 	THREAD_FUNC tf[2] = {search,insert};
 	// 1. create key/value store
-	KV_NEW();
-	my_kvs = KV_NEW();
+	my_kvs = kv_new(MAX_HASH_N);
 	if (my_kvs == NULL) {
 		printf("kv create if failed\n");
 		getchar();
@@ -208,10 +190,10 @@ int main() {
 	for(int i = 0;i<100000;i++){
 		node.key = i;
 		node.value = i;
-		KV_PUT(my_kvs, &node);
+		kv_put(my_kvs, &node);
 	}
 	do_benchmark(my_kvs, NUM_THREADS,tf);
-	KV_DESTROY(my_kvs);
+	kv_destroy(my_kvs);
 
 	printf("test is done!\n");
 

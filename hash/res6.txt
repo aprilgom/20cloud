@@ -1,0 +1,6 @@
+rwlock hash
+
+elapsed = 0.866449
+
+ops = 2192858.742760
+test is done!
