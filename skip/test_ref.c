@@ -4,7 +4,7 @@
 #include <time.h>
 #include "kvsh.h"
 
-#define MAX_HASH_N		65537 
+#define MAX_HASH_N		547 
 #define NUM_NODES		1000000
 #define NUM_THREADS		10	
 
